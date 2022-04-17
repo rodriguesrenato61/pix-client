@@ -1,0 +1,21 @@
+.spinner{
+    position: fixed;
+    top: calc(50% - 30px);
+    left: calc(50% - 30px);
+    border: 8px solid rgba(0, 0, 0, .1);
+    border-left-color: #22a6b3;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    display: none;
+}
+
+@keyframes spin{
+    to { transform: rotate(360deg); }
+}
+
+.active-spinner{
+    animation: spin 1s linear infinite;
+    display: block;
+    z-index: 10002;
+}
