@@ -3,6 +3,7 @@
     namespace App\Pix;
 
     use App\Repositories\PixAplicacaoRepository;
+    use App\Utils\Config;
 
     class PixClientApi {
 
@@ -16,9 +17,13 @@
         private $accessTokenExpiracao;
 
         public function __construct($db){
-            $this->baseUrl = "https://localhost/projetos/payment-service/api/pix.php?op=";
+            $this->baseUrl = Config::getApiUrl()."?op=";
             $this->pixAplicacaoRepository = new PixAplicacaoRepository($db);
-        } 
+        }
+
+        public function toString(){
+            echo("<br>baseUrl: {$this->baseUrl}");
+        }  
 
         public function setAppNome($appNome){
             $this->appNome = $appNome;
@@ -151,11 +156,14 @@
 			if($this->getAccessToken() != null){
 			
 				$endpoint = $this->baseUrl.$resource;
+
+                //echo("endpoint: {$endpoint}");
+                $authorization = Config::getAuthorizationHeader();
 				
 				$headers = [
 					'Cache-Control: no-cache',
 					'Content-Type: application/json',
-					'Authorization: Bearer '.$this->accessToken
+					$authorization.': Bearer '.$this->accessToken
 				];
 				
 				//configuração do curl

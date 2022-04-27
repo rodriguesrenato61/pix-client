@@ -1,4 +1,4 @@
-const baseUrl = "https://localhost/projetos/pix-client/routes/pix.php";
+const baseUrl = document.querySelector('#base-url').value+"/routes/pix.php";
 	
 const tipoDevedor = document.querySelector('#tipo-devedor');
 const formCriaPix = document.querySelector('#form-cria-pix');
@@ -62,7 +62,7 @@ function criaPix(){
 		const nomeDevedor = document.querySelector('#nome-devedor').value;
 		const valor = document.querySelector('#valor').value;
 		const solicitacaoPagador = document.querySelector('#solicitacao-pagador').value;
-		//cpf: 14279025002
+		
 		const form = new FormData();
 		form.append('recebedor', recebedor);
 		form.append('tipoDevedor', tipoDevedor);
@@ -111,7 +111,6 @@ function criaPix(){
 }
 
 function consultaPix(){
-	//eb00c09115ef4d2d9c383782d9c93d01
 	if(txidCriado != ''){
 		fecharModal();
 		openModalSpinner();
@@ -134,25 +133,10 @@ function consultaPix(){
 	
 }
 
-function imprimeErros(erros){
-	if(erros.dados){
-		const result = document.querySelector('#modal-body');
-		let html = "<h5>Erros: </h5>";
-		html += "<ul>";
-		erros.dados.forEach((erro) => {
-			html += "<li>"+erro+"</li>";
-		});
-		html += "</ul>";
-		result.innerHTML = html;
-		abrirModal();
-	}
-}
-
 function abrirModal(){
 	const modalPix = $('#modal-pix');
 	modalPix.modal('show');
 }
-
 
 //fecha o modal para adicionar o prato ao pedido
 function fecharModal(){
@@ -160,9 +144,5 @@ function fecharModal(){
 	modalPix.modal('hide');
 }
 
-function imprimePago(){
-	const modalBody = document.querySelector('#modal-body');
-	modalBody.innerHTML = 'PAGO';
-}
 
 			

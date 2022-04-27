@@ -3,6 +3,7 @@
     require_once("vendor/autoload.php");
 
     use App\Services\PixClientService;
+    use App\Utils\Config;
 
     $service = new PixClientService();
 
@@ -49,6 +50,7 @@
 		</div> <!-- fim modal-pix -->
 
         <div class="container">
+            <input type="hidden" id="base-url" value="<?php echo(Config::getBaseUrl()); ?>" />
             <div class="title">Criar Pix</div>
             <form id="form-cria-pix" action="#">
                 <div class="pix-details">

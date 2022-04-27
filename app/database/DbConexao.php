@@ -2,27 +2,26 @@
 
 	namespace App\Database;
 
+	use App\Utils\Config;
+
 	class DbConexao {
 		
-		private $pdo;
-		
-		public function __construct(){
-			try {
-			
-				$host = "localhost";
-				$dbname = "pix_client_db";
-				$user = "root";
-				$password = "";
-				
-				$this->pdo = new \PDO("mysql:host={$host};dbname={$dbname}", $user, $password);
-				
-			} catch(PDOException $e){
-				echo($e->getMessage());
-			}
-		}
+		private static $pdo;
 		
 		public function getPdo(){
-			return $this->pdo;
+			try{
+				if(!self::$pdo){
+					$host = Config::getDbHost();
+					$dbname = Config::getDbName();
+					$user = Config::getDbUser();
+					$password = Config::getDbPassword();
+					
+					self::$pdo = new \PDO("mysql:host={$host};dbname={$dbname}", $user, $password);
+				}
+				return self::$pdo;
+			}catch(\PDOException $e){
+				echo($e->getMessage());
+			}
 		}
 		
 		public function select($tbl, $query, $wheres, $page, $limit, $orderBy){
@@ -54,8 +53,9 @@
 				$paginate = true;
 				$atual = ($page - 1) * $limit;
 				$query .= " LIMIT :atual, :limite";
-			}	
-			$sql = $this->pdo->prepare($query);
+			}
+				
+			$sql = $this->getPdo()->prepare($query);
 			$w = array();
 			foreach($wheres as $where){
 				$w[] = [
@@ -106,7 +106,7 @@
 				$query .= "{$where['filtro']}";
 			}
 				
-			$sql = $this->pdo->prepare($query);
+			$sql = $this->getPdo()->prepare($query);
 			foreach($wheres as $where){
 				$sql->bindParam($where['nome'], $where['valor'], $where['tipo']);
 			}
@@ -120,23 +120,6 @@
 			}
 			
 			return $retorno;
-		}
-		
-		public function datetimeFormat($campo){
-			return "DATE_FORMAT({$campo}, '%Y-%m-%d %H:%i:%s')";
-		}
-
-		public function datetimeBrFormat($campo){
-			return "DATE_FORMAT({$campo}, '%d/%m/%Y %H:%i:%s')";
-		}
-		
-		public function getUnixTimestamp($data){
-			$sql = $this->pdo->prepare("SELECT UNIX_TIMESTAMP(:data)");
-			$sql->bindParam(":data", $data, \PDO::PARAM_STR);
-			$sql->execute();
-			$row = $sql->fetch();
-			
-			return $row[0];
 		}
 		
 	}
