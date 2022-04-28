@@ -6,6 +6,7 @@ Com ele nós podemos identificar qual aplicação realizou a criação do pix, o
 
 ### 1 - Autenticação:
 endpoint: /auth
+
 método: POST
 
 ### request
@@ -18,6 +19,7 @@ método: POST
 
 ### 2 - Criação do pix:
 endpoint: /cria-pix
+
 método: POST
 
 ### request
@@ -30,8 +32,11 @@ método: POST
 
 ### 3 - Buscar pix
 endpoint: /find-pix
+
 parâmetros: txid
+
 método: GET
+
 Possui o mesmo response do método de criação do pix
 
 O código fonte da aplicação deste repositório contém os exemplos de como é feito a integração com o módulo pix. 
