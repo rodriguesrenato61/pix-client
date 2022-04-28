@@ -1,8 +1,35 @@
 # pix-client
 ### Aplicação cliente para o módulo pix que estou a desenvolver.
 
+O módulo pix se trata de uma aplicação web que tem o intuito de facilitar que outras aplicações sejam integradas com o a api pix, é um módulo que pode ser compartilhado com várias aplicações por meio de sua api. Dentre as funcionalidades ele nos permite cadastrar novos usuários com suas credenciais de acesso a api pix, gerenciar transações feitas, e cadastrar novas aplicações que terão acesso a sua api.
+Com ele nós podemos identificar qual aplicação realizou a criação do pix, o usuário que irá receber o pix, o banco usado, data de criação e outras informações. Por enquanto só funciona com a api pix da Gerencianet. A integração com a api do módulo requer autenticação jwt, segue alguns exemplos de como é feita a integração:
+1 - Autenticação:
+endpoint: /auth
+método: POST
+
+request
+![auth](https://github.com/rodriguesrenato61/pix-client/blob/main/prints/auth.png)
+response
+![auth_response](https://github.com/rodriguesrenato61/pix-client/blob/main/prints/auth_response.png)
+
+2 - Criação do pix:
+endpoint: /cria-pix
+método: POST
+
+request
+![create_pix_request](https://github.com/rodriguesrenato61/pix-client/blob/main/prints/create_pix_request.png)
+response
+![create_pix_response](https://github.com/rodriguesrenato61/pix-client/blob/main/prints/create_pix_response.png)
+
+3 - Buscar pix
+endpoint: /find-pix
+parâmetros: txid
+método: GET
+Possui o mesmo response do método de criação do pix
+
+O código fonte da aplicação deste repositório contém os exemplos de como é feito a integração com o módulo pix. 
 Para utilização do módulo pix envie um email para rodriguesrenato61@gmail.com solicitando a criação de um usuário de acesso ao módulo e caso apresente algum erro, problema ou bug na aplicação.
-Para realização de testes clique no menu Api e realize o cadastro das credenciais de acesso a api pix, por enquanto só funciona com a Gerencianet.
+Para realização de testes clique no menu Api do módulo pix e realize o cadastro das credenciais de acesso a api pix, por enquanto só funciona com a Gerencianet.
 
 ![credenciais](https://github.com/rodriguesrenato61/pix-client/blob/main/prints/tela_credenciais.png)
 

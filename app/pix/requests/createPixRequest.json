@@ -1,0 +1,17 @@
+
+{
+    "devedor": {
+        "tipo": "cpf",
+        "nome": "Renato Rodrigues",
+        "cpfCnpj": "14279025002" 
+    },
+    "valor": "0.50",
+    "solicitacaoPagador": "Teste pix",
+    "recebedorId": 1,
+    "infoAdicionais": [
+        {
+            "nome": "produto-1",
+            "valor": "teste produto"
+        }
+    ]
+}

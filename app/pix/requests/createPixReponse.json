@@ -1,0 +1,21 @@
+{
+    "txid": "60505dd13bc54340ae88b6a768602c31",
+    "qrcode": "código copia e cola",
+    "qrcodeImage": "imagem do qrcode em base64",
+    "status":  "ATIVA",
+    "dataCriacao": "2022-04-28 09:06:52",
+    "dataExpiracao": "2022-04-28 10:06:52",
+    "devedor": {
+        "tipo": "cpf",
+        "nome": "Renato Rodrigues" 
+    },
+    "valor": "0.50",
+    "chave": "chave pix do recebedor",
+    "solicitacaoPagador": "Teste pix",
+    "infoAdicionais": [
+        {
+            "nome": "produto-1",
+            "valor": "teste produto"
+        }
+    ]
+}

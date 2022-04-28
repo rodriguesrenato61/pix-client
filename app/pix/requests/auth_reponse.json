@@ -1,0 +1,8 @@
+{
+    "success": true,
+    "msg": "Aplicação autenticada com sucesso!",
+    "dados": {
+        "accessToken": "eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFMyNTYifQ==.eyJuYW1lIjoiUGl4IE1cdTAwZjNkdWxvIiwiY29kIjoiQVBQXzAwMDQyODE2NDk3MjIyMDEifQ==.UPEhdMT05tKhz0hCVDC7LNklJAmNEUBkI/kH5VUnRwk=",
+        "expiracao": 3600
+    }
+}
