@@ -3,25 +3,32 @@
 
 O módulo pix se trata de uma aplicação web que tem o intuito de facilitar que outras aplicações sejam integradas com o a api pix, é um módulo que pode ser compartilhado com várias aplicações por meio de sua api. Dentre as funcionalidades ele nos permite cadastrar novos usuários com suas credenciais de acesso a api pix, gerenciar transações feitas, e cadastrar novas aplicações que terão acesso a sua api.
 Com ele nós podemos identificar qual aplicação realizou a criação do pix, o usuário que irá receber o pix, o banco usado, data de criação e outras informações. Por enquanto só funciona com a api pix da Gerencianet. A integração com a api do módulo requer autenticação jwt, segue alguns exemplos de como é feita a integração:
-1 - Autenticação:
+
+### 1 - Autenticação:
 endpoint: /auth
 método: POST
 
-request
+### request
+
 ![auth](https://github.com/rodriguesrenato61/pix-client/blob/main/prints/auth.png)
-response
+
+### response
+
 ![auth_response](https://github.com/rodriguesrenato61/pix-client/blob/main/prints/auth_response.png)
 
-2 - Criação do pix:
+### 2 - Criação do pix:
 endpoint: /cria-pix
 método: POST
 
-request
+### request
+
 ![create_pix_request](https://github.com/rodriguesrenato61/pix-client/blob/main/prints/create_pix_request.png)
-response
+
+### response
+
 ![create_pix_response](https://github.com/rodriguesrenato61/pix-client/blob/main/prints/create_pix_response.png)
 
-3 - Buscar pix
+### 3 - Buscar pix
 endpoint: /find-pix
 parâmetros: txid
 método: GET
